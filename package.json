@@ -1,0 +1,29 @@
+{
+  "name": "horcrux-flux",
+  "version": "0.0.0",
+  "main": "dist/horcrux-flux",
+  "jspm": {
+    "registry": "github",
+    "directories": {},
+    "dependencies": {
+      "horcrux-core": "hor-crux/horcrux-core@master",
+      "horcrux-di": "hor-crux/horcrux-di@master"
+    },
+    "devDependencies": {}
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "del": "^2.0.1",
+    "merge-stream": "^1.0.0",
+    "gulp-wrap": "^0.11.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-add-src": "^0.2.0",
+    "gulp-replace": "^0.5.4",
+    "run-sequence": "^1.1.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.8.2",
+    "jspm": "^0.16.2",
+    "require-dir": "^0.3.0",
+    "typescript": "^1.6.0-dev.20150909"
+  }
+}
