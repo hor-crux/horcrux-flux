@@ -4,7 +4,9 @@
   "main": "dist/horcrux-flux",
   "jspm": {
     "registry": "github",
-    "directories": {},
+    "directories": {
+      "lib": "dist"
+    },
     "dependencies": {
       "horcrux-core": "hor-crux/horcrux-core@master",
       "horcrux-di": "hor-crux/horcrux-di@master"
