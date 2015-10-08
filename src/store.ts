@@ -22,7 +22,7 @@ class Store<T> extends CallbackHolder {
 	}
 		
 	protected handle(action: DispatcherAction): void {
-		let handlerMap = this.constructor.prototype.handlerMap
+		let handlerMap = (<any>this.constructor).handlerMap;
 		let handlers = handlerMap[action.type] || [];
 		
 		handlers.forEach(handler => {
