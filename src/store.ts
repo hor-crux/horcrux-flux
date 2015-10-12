@@ -7,8 +7,6 @@ class Store<T> extends CallbackHolder {
 	@inject(Dispatcher)
 	protected dispatcher: Dispatcher;
 
-	static handlerMap: any = {};
-	
 	public id: string;
 	protected data: T;
 	
@@ -22,7 +20,7 @@ class Store<T> extends CallbackHolder {
 	}
 		
 	protected handle(action: DispatcherAction): void {
-		let handlerMap = (<any>this.constructor).handlerMap;
+		let handlerMap = (<any>this).handlerMap || {};
 		let handlers = handlerMap[action.type] || [];
 		
 		handlers.forEach(handler => {
@@ -41,7 +39,7 @@ class Store<T> extends CallbackHolder {
 }
 
 function handle(type:string|number): MethodDecorator {
-	return (target: typeof Store, propertyKey: string | symbol, descriptor: any) => {
+	return (target: any, propertyKey: string | symbol, descriptor: any) => {
 		target.handlerMap = target.handlerMap || {};
 		target.handlerMap[type] = target.handlerMap[type] || [];
 		target.handlerMap[type].push(target[propertyKey]);

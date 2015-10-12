@@ -1,6 +1,6 @@
 declare module "horcrux-flux" {
-export {	Dispatcher,	Store,	handle}
-class CallbackHolder {
+export {	Dispatcher,	Store,	handle}
+class CallbackHolder {
     protected prefix: string;
     protected lastID: number;
     protected callbacks: {
@@ -57,7 +57,6 @@ interface DispatcherAction {
 }
  class Store<T> extends CallbackHolder {
     protected dispatcher: Dispatcher;
-    static handlerMap: any;
     id: string;
     protected data: T;
     constructor();
