@@ -5,7 +5,7 @@ import {inject} from "horcrux-di"
 class Store<T> extends CallbackHolder {
 
 	@inject(Dispatcher)
-	protected dispatcher: Dispatcher
+	protected dispatcher: Dispatcher;
 
 	static handlerMap: any = {};
 	
@@ -40,7 +40,7 @@ class Store<T> extends CallbackHolder {
 	}
 }
 
-function handle(type:string): MethodDecorator {
+function handle(type:string|number): MethodDecorator {
 	return (target: typeof Store, propertyKey: string | symbol, descriptor: any) => {
 		target.handlerMap = target.handlerMap || {};
 		target.handlerMap[type] = target.handlerMap[type] || [];

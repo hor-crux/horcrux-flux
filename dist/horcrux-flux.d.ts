@@ -1,6 +1,6 @@
 declare module "horcrux-flux" {
-export {	Dispatcher,	Store,	handle}
-class CallbackHolder {
+export {	Dispatcher,	Store,	handle}
+class CallbackHolder {
     protected prefix: string;
     protected lastID: number;
     protected callbacks: {
@@ -65,5 +65,5 @@ interface DispatcherAction {
     protected handle(action: DispatcherAction): void;
     protected changed(): void;
 }
- function handle(type: string): MethodDecorator;
+ function handle(type: string | number): MethodDecorator;
 }
