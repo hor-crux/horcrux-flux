@@ -1,5 +1,5 @@
 declare module "horcrux-flux" {
-export {	Dispatcher,	Store,	handle}
+export {	Dispatcher,	Store,	handle,	onChange}
 class CallbackHolder {
     protected prefix: string;
     protected lastID: number;
@@ -55,6 +55,7 @@ interface DispatcherAction {
      */
     data?: any;
 }
+ function handle(type: string | number): MethodDecorator;
  class Store<T> extends CallbackHolder {
     protected dispatcher: Dispatcher;
     id: string;
@@ -64,5 +65,5 @@ interface DispatcherAction {
     protected handle(action: DispatcherAction): void;
     protected changed(): void;
 }
- function handle(type: string | number): MethodDecorator;
+ function onChange(clazz: typeof Store): MethodDecorator;
 }
