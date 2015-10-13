@@ -15,8 +15,13 @@ class Store<T> extends CallbackHolder {
 		this.id = this.dispatcher.register(this.handle.bind(this));
 	}
 	
-	public register(callback: (data:T)=>void, self?:any): string {
-		return super.register(callback, self);
+	public register(callback: (data:T)=>void, self?:any, callNow=true): string {
+		let id = super.register(callback, self);
+		
+		if(!!callNow)
+			this.callbacks[id](this.data);
+		
+		return id;
 	}
 		
 	protected handle(action: DispatcherAction): void {

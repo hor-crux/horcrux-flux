@@ -61,7 +61,7 @@ interface DispatcherAction {
     id: string;
     protected data: T;
     constructor();
-    register(callback: (data: T) => void, self?: any): string;
+    register(callback: (data: T) => void, self?: any, callNow?: boolean): string;
     protected handle(action: DispatcherAction): void;
     protected changed(): void;
 }
