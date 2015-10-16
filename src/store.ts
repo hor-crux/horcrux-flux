@@ -2,7 +2,7 @@ import {CallbackHolder} from "./callbackholder"
 import {Dispatcher} from "./dispatcher"
 import {inject} from "horcrux-di"
 
-class Store<T> extends CallbackHolder {
+class Store<T> extends CallbackHolder<(data:T)=>any> {
 
 	@inject(Dispatcher)
 	protected dispatcher: Dispatcher;
