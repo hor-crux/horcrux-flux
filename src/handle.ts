@@ -18,10 +18,12 @@ function handle(...types:Array<string|number>): MethodDecorator {
 			
 			types.forEach(type => {
 				target.onCreated.push(self=>{
-					dispatcher.register(action => {
-						if(action.type === type)
-							self[propertyKey].call(self, action);
-					})
+					(function(self){
+						dispatcher.register(action => {
+							if(action.type === type && typeof self[propertyKey] === "function")
+								self[propertyKey].call(self, action);
+						})
+					})(self)
 				})
 			});
 		}
