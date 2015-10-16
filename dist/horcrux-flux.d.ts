@@ -60,10 +60,12 @@ interface DispatcherAction {
     protected dispatcher: Dispatcher;
     id: string;
     protected data: T;
+    protected copyData: Boolean;
     constructor();
     register(callback: (data: T) => void, self?: any, callNow?: boolean): string;
     protected handle(action: DispatcherAction): void;
     protected changed(): void;
+    protected getData(): T;
 }
  function onChange(clazz: typeof Store): MethodDecorator;
 }

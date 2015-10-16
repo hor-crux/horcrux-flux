@@ -9,6 +9,7 @@ class Store<T> extends CallbackHolder<(data:T)=>any> {
 
 	public id: string;
 	protected data: T;
+	protected copyData: Boolean = true;
 	
 	constructor() {
 		super();
@@ -39,6 +40,15 @@ class Store<T> extends CallbackHolder<(data:T)=>any> {
 			let cb = this.callbacks[id];
 			if(cb)
 				cb(this.data);
+		}
+	}
+	
+	protected getData(): T {
+		if(!!this.copyData) {
+			return JSON.parse(JSON.stringify(this.data));
+		}
+		else {
+			return this.data;
 		}
 	}
 }
