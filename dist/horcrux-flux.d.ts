@@ -55,7 +55,7 @@ interface DispatcherAction {
      */
     data?: any;
 }
- function handle(type: string | number): MethodDecorator;
+ function handle(...types: Array<string | number>): MethodDecorator;
  class Store<T> extends CallbackHolder<(data: T) => any> {
     protected dispatcher: Dispatcher;
     id: string;
