@@ -1,5 +1,5 @@
-import { Store } from './store';
 import { get } from 'horcrux-di';
+import { Store } from './store';
 
 function onChange(clazz:typeof Store): MethodDecorator {
 	return (target: any, propertyKey: string | symbol, descriptor: any) => {

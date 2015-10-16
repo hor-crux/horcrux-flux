@@ -1,4 +1,4 @@
-export default class CallbackHolder {
+class CallbackHolder {
 
 	protected prefix: string = 'ID_';
 	protected lastID: number = 1;
@@ -26,3 +26,5 @@ export default class CallbackHolder {
 		delete this.callbacks[id];
 	};
 }
+
+export {CallbackHolder}

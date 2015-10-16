@@ -23,7 +23,7 @@ declare module "horcrux-flux" {
  * Main Dispatcher Class.
  * Used to Dispatch actions across all registered listeners.
  */
-class Dispatcher extends CallbackHolder {
+ class Dispatcher extends CallbackHolder {
     private isPending;
     private isHandled;
     private isDispatching;

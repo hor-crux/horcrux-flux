@@ -1,12 +1,12 @@
-import CallbackHolder from "./callbackholder"
 import {register} from "horcrux-di"
+import {CallbackHolder} from "./callbackholder"
 
 /**
  * Main Dispatcher Class.
  * Used to Dispatch actions across all registered listeners.
  */
 @register
-export default class Dispatcher extends CallbackHolder {
+class Dispatcher extends CallbackHolder {
 
 	private isPending: {[key:string]:boolean} = {};
 	private isHandled: {[key:string]:boolean} = {};
@@ -79,3 +79,5 @@ export default class Dispatcher extends CallbackHolder {
 		this.isDispatching = false;
 	}
 }
+
+export {Dispatcher}
