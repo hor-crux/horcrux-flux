@@ -1,5 +1,5 @@
-import CallbackHolder from "./callbackholder"
-import Dispatcher from "./dispatcher"
+import {CallbackHolder} from "./callbackholder"
+import {Dispatcher} from "./dispatcher"
 import {inject} from "horcrux-di"
 
 class Store<T> extends CallbackHolder {
