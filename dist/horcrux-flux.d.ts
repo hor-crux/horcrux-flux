@@ -1,10 +1,10 @@
 declare module "horcrux-flux" {
 export {	Dispatcher,	Store,	handle,	onChange}
- class CallbackHolder {
+ class CallbackHolder<T extends Function> {
     protected prefix: string;
     protected lastID: number;
     protected callbacks: {
-        [key: string]: Function;
+        [key: string]: T;
     };
     /**
      * Registeres an callback to the CallbackHolder.
@@ -12,7 +12,7 @@ declare module "horcrux-flux" {
      * @param self if given, self will be bound as 'this' to the callback function
      * @return unique id that can be used to unregister the callback
      */
-    register(callback: Function, self?: any): string;
+    register(callback: T, self?: any): string;
     /**
      * Unregisteres an callback from the CallbackHolder.
      * @param id unique id of the callback to unregister
@@ -23,7 +23,7 @@ declare module "horcrux-flux" {
  * Main Dispatcher Class.
  * Used to Dispatch actions across all registered listeners.
  */
- class Dispatcher extends CallbackHolder {
+ class Dispatcher extends CallbackHolder<(action: DispatcherAction) => any> {
     private isPending;
     private isHandled;
     private isDispatching;

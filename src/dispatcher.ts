@@ -6,7 +6,7 @@ import {CallbackHolder} from "./callbackholder"
  * Used to Dispatch actions across all registered listeners.
  */
 @register
-class Dispatcher extends CallbackHolder {
+class Dispatcher extends CallbackHolder<(action:DispatcherAction)=>any> {
 
 	private isPending: {[key:string]:boolean} = {};
 	private isHandled: {[key:string]:boolean} = {};

@@ -12,9 +12,13 @@ function handle(type:string|number): MethodDecorator {
 		//expect target to be an CustomElement Prototype
 		else {
 			let dispatcher = get(Dispatcher);
+			
 			target.onCreated = target.onCreated || [];
 			target.onCreated.push(self=>{
-				dispatcher.register(self[propertyKey], self)
+				dispatcher.register(action => {
+					if(action.type === type)
+						self[propertyKey].call(self, action);
+				})
 			})
 		}
 	}

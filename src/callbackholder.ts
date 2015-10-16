@@ -1,8 +1,8 @@
-class CallbackHolder {
+class CallbackHolder<T extends Function> {
 
 	protected prefix: string = 'ID_';
 	protected lastID: number = 1;
-	protected callbacks: {[key:string]:Function} = {};
+	protected callbacks: {[key:string]:T} = {};
 
 	/**
 	 * Registeres an callback to the CallbackHolder.
@@ -10,7 +10,7 @@ class CallbackHolder {
 	 * @param self if given, self will be bound as 'this' to the callback function
 	 * @return unique id that can be used to unregister the callback
 	 */
-	public register(callback: Function, self?: any): string {
+	public register(callback: T, self?: any): string {
 		let id = this.prefix + this.lastID++;
 		this.callbacks[id] = self ? callback.bind(self) : callback;
 		return id;
